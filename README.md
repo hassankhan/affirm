@@ -6,10 +6,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Affirm is a simple, no-frills validation package written for PHP 5.4+. It is a PHP port of [is.js](http://arasatasaygin.github.io/is.js/).
-
-Features:
-- Uses exceptions by default (sorry, error lovers)
+Affirm is a simple, no-frills assertion/validation package written for PHP 5.4+. It is a PHP port of [is.js](http://arasatasaygin.github.io/is.js/).
 
 ## Install
 
@@ -21,15 +18,15 @@ $ composer require hassankhan/affirm
 
 ## Usage
 
-You can use Affirm in different ways:
+You can use Affirm in a few different ways:
 ```php
-Affirm::is();
-
 $affirm = new Affirm()
-$affirm->are();
+$affirm->are('25', '50', '75')->any()->even();
 
 $affirm->_include($string, $substring);
 ```
+
+Please read the API documentation for a full list of available methods.
 
 ## Contributing
 
