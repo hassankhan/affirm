@@ -144,6 +144,9 @@ class Affirm
      */
     private function processValues($name, $arguments)
     {
+        // Set `$result` to `false`
+        $result = false;
+
         // Loop through `$this->values` and get `$result`
         foreach ($this->values as $value) {
             $args   = array_merge([$value], $arguments);
