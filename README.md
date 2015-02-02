@@ -26,10 +26,9 @@ You can use Affirm in different ways:
 Affirm::is();
 
 $affirm = new Affirm()
-$affirm->is();
+$affirm->are();
 
 $affirm->_include($string, $substring);
-
 ```
 
 ## Contributing

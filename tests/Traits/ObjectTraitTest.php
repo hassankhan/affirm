@@ -39,7 +39,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCount()
     {
-        $actual = $this->object->is(new TestObj)->propertyCount(2);
+        $actual = $this->object->_propertyCount(new TestObj, 2);
         $this->assertTrue($actual);
     }
 
@@ -49,7 +49,7 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDefined()
     {
-        $actual = $this->object->is(new TestObj)->propertyDefined('prop1');
+        $actual = $this->object->_propertyDefined(new TestObj, 'prop1');
         $this->assertTrue($actual);
     }
 

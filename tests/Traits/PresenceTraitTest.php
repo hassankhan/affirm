@@ -33,7 +33,7 @@ class PresenceTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsEmpty()
     {
-        $actual = $this->object->is('')->empty();
+        $actual = $this->object->_empty('');
         $this->assertTrue($actual);
     }
 
@@ -43,7 +43,7 @@ class PresenceTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsTruthy()
     {
-        $actual = $this->object->is('true')->truthy();
+        $actual = $this->object->_truthy('true');
         $this->assertTrue($actual);
     }
 
@@ -53,7 +53,7 @@ class PresenceTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsFalsy()
     {
-        $actual = $this->object->is('false')->falsy();
+        $actual = $this->object->_falsy('false');
         $this->assertFalse($actual);
     }
 
@@ -63,7 +63,7 @@ class PresenceTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsSpace()
     {
-        $actual = $this->object->is('     ')->space();
+        $actual = $this->object->_space('     ');
         $this->assertTrue($actual);
     }
 

@@ -33,7 +33,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsBoolean()
     {
-        $actual = $this->object->is(true)->boolean();
+        $actual = $this->object->_boolean(true);
         $this->assertTrue($actual);
     }
 
@@ -43,7 +43,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsArray()
     {
-        $actual = $this->object->is(['array'])->array();
+        $actual = $this->object->_array(['array']);
         $this->assertTrue($actual);
     }
 
@@ -53,7 +53,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsDate()
     {
-        $actual = $this->object->is('2000-00-00')->date();
+        $actual = $this->object->_date('2000-00-00');
         $this->assertTrue($actual);
     }
 
@@ -64,7 +64,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     public function testIsFunction()
     {
         $function = function() { return; };
-        $actual = $this->object->is($function)->function();
+        $actual = $this->object->_function($function);
         $this->assertTrue($actual);
     }
 
@@ -74,7 +74,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsNull()
     {
-        $actual = $this->object->is(NULL)->null();
+        $actual = $this->object->_null(NULL);
         $this->assertTrue($actual);
     }
 
@@ -84,7 +84,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsNumber()
     {
-        $actual = $this->object->is('5')->number();
+        $actual = $this->object->_number('5');
         $this->assertTrue($actual);
     }
 
@@ -94,7 +94,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsRegexp()
     {
-        $actual = $this->object->is('#(.*)#')->regexp();
+        $actual = $this->object->_regexp('#(.*)#');
         $this->assertTrue($actual);
     }
 
@@ -104,7 +104,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsString()
     {
-        $actual = $this->object->is('string')->string();
+        $actual = $this->object->_string('string');
         $this->assertTrue($actual);
     }
 
@@ -114,7 +114,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsInvalidBoolean()
     {
-        $actual = $this->object->is('notaboolean')->boolean();
+        $actual = $this->object->_boolean('notaboolean');
         $this->assertFalse($actual);
     }
 
@@ -124,7 +124,7 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsInvalidDate()
     {
-        $actual = $this->object->is('hahahaha')->date();
+        $actual = $this->object->_date('hahahaha');
         $this->assertFalse($actual);
     }
 

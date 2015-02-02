@@ -6,6 +6,7 @@ use Affirm\Traits\TypeTrait;
 use Affirm\Traits\PresenceTrait;
 use Affirm\Traits\RegexpTrait;
 use Affirm\Traits\StringTrait;
+use Affirm\Traits\ArithmeticTrait;
 use Affirm\Traits\ObjectTrait;
 
 /**
@@ -24,6 +25,7 @@ class Affirm
     use PresenceTrait;
     use RegexpTrait;
     use StringTrait;
+    use ArithmeticTrait;
     use ObjectTrait;
 
     /**
@@ -33,15 +35,26 @@ class Affirm
      */
     protected $values;
 
+    /**
+     * A boolean that is set true for the 'not' modifier
+     *
+     * @var boolean
+     */
     protected $notFlag;
+
+    /**
+     * A boolean that is set true for the 'any' modifier
+     *
+     * @var boolean
+     */
+    protected $anyFlag;
 
     /**
      * Create a new Affirm instance
      */
     public function __construct()
     {
-        $this->values  = [];
-        // $this->notFlag = '';
+        $this->values = [];
         return $this;
     }
 
@@ -94,18 +107,7 @@ class Affirm
     }
 
     /**
-     * Sets `$this->allFlag = true`
-     *
-     * @return Affirm\Affirm
-     */
-    public function all()
-    {
-        $this->allFlag = true;
-        return $this;
-    }
-
-    /**
-     * Returns all values to be 'affirmed'
+     * Returns all values yet to be 'affirmed'
      *
      * @return array
      */
@@ -119,35 +121,47 @@ class Affirm
      * or otherwise). Then, all values  in `$this->values` are run against the
      * chosen filter.
      *
-     * @todo   Fix up
-     *
      * @param  string $name
      * @param  mixed  $arguments
      *
      * @return mixed
+     *
+     * @throws Exception If an invalid method is called
      */
     public function __call($name, $arguments)
     {
         if (method_exists($this, "_$name")) {
-            if (count($this->values) === 1) {
-                $args = array_merge($this->values, $arguments);
-                return $this->notFlag
-                    ? !call_user_func_array([$this, "_$name"], $args)
-                    : call_user_func_array([$this, "_$name"], $args);
-            }
-
-            /* Hacky */
-            $result = true;
-            foreach ($this->values as $value) {
-                $args   = array_merge([$value], $arguments);
-                $result = call_user_func_array([$this, "_$name"], $args);
-            }
-            return $this->notFlag
-                ? !$result
-                : $result;
+            return  $this->processValues($name, $arguments);
         }
-
         throw new \Exception("Method $name doesn't exist");
+    }
+
+    /**
+     * Internal method that processes `$this->values` by sending each element to
+     * `$this->_$name`. It also takes any set flags into consideration.
+     *
+     * @param  string $name
+     * @param  array  $arguments
+     *
+     * @return bool
+     */
+    private function processValues($name, $arguments)
+    {
+        // Loop through `$this->values` and get `$result`
+        foreach ($this->values as $value) {
+            $args   = array_merge([$value], $arguments);
+            $result = call_user_func_array([$this, "_$name"], $args);
+
+            // If `$this->anyFlag` is set, and we've found a good `$result`,
+            // break out of the loop and return it
+            if ($this->anyFlag && $result === true) {
+                break;
+            }
+        }
+        // If `$this->notFlag` is set, then simply invert `$result` and return
+        return $this->notFlag
+            ? !$result
+            : $result;
     }
 
 }

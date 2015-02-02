@@ -33,7 +33,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsInclude()
     {
-        $actual = $this->object->is('Am I here')->include('Am');
+        $actual = $this->object->_include('Am I here', 'Am');
         $this->assertTrue($actual);
     }
 
@@ -43,7 +43,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsUpperCase()
     {
-        $actual = $this->object->is('AAA')->upperCase();
+        $actual = $this->object->_upperCase('AAA');
         $this->assertTrue($actual);
     }
     /**
@@ -52,7 +52,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsLowerCase()
     {
-        $actual = $this->object->is('eee')->lowerCase();
+        $actual = $this->object->_lowerCase('eee');
         $this->assertTrue($actual);
     }
     /**
@@ -61,7 +61,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsStartsWith()
     {
-        $actual = $this->object->is('This')->startsWith('Th');
+        $actual = $this->object->_startsWith('This', 'Th');
         $this->assertTrue($actual);
     }
     /**
@@ -70,7 +70,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsEndsWith()
     {
-        $actual = $this->object->is('This')->endsWith('is');
+        $actual = $this->object->_endsWith('This', 'is');
         $this->assertTrue($actual);
     }
 
@@ -80,7 +80,7 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsCapitalized()
     {
-        $actual = $this->object->is('This')->capitalized();
+        $actual = $this->object->_capitalized('This');
         $this->assertTrue($actual);
     }
 

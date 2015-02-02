@@ -16,12 +16,12 @@ use DateTime;
 trait TypeTrait
 {
 
-    protected function _boolean($boolean)
+    public function _boolean($boolean)
     {
         return is_bool($boolean);
     }
 
-    protected function _array($array)
+    public function _array($array)
     {
         return is_array($array);
     }
@@ -33,7 +33,7 @@ trait TypeTrait
      *
      * @return boolean True if valid, false otherwise
      */
-    protected function _date($date)
+    public function _date($date)
     {
         try {
             $datetime = new DateTime($date);
@@ -51,17 +51,17 @@ trait TypeTrait
      *
      * @return boolean        True if valid, false otherwise
      */
-    protected function _function($function)
+    public function _function($function)
     {
         return is_callable($function);
     }
 
-    protected function _null($value)
+    public function _null($value)
     {
         return empty($value);
     }
 
-    protected function _number($number)
+    public function _number($number)
     {
         return ctype_digit($number);
     }
@@ -75,14 +75,14 @@ trait TypeTrait
      *
      * @see http://stackoverflow.com/a/12941133/465273
      */
-    protected function _regexp($pattern)
+    public function _regexp($pattern)
     {
         return preg_match($pattern, null) === false
             ? false
             : true;
     }
 
-    protected function _string($value)
+    public function _string($value)
     {
         return is_string($value);
     }

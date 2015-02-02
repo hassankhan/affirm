@@ -33,7 +33,7 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsUrl()
     {
-        $actual = $this->object->is('http://google.com')->url();
+        $actual = $this->object->_url('http://google.com');
         $this->assertTrue($actual);
     }
 
@@ -43,7 +43,17 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsEmail()
     {
-        $actual = $this->object->is('a@a.com')->email();
+        $actual = $this->object->_email('a@a.com');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\RegexpTrait::_creditCard()
+     * @group  regexp
+     */
+    public function testIsCreditCard()
+    {
+        $actual = $this->object->_creditCard('378282246310005');
         $this->assertTrue($actual);
     }
 
@@ -53,7 +63,7 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsUSZipCode()
     {
-        $actual = $this->object->is('02201-1020')->usZipCode();
+        $actual = $this->object->_usZipCode('02201-1020');
         $this->assertTrue($actual);
     }
 
@@ -63,7 +73,7 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsCAPostalCode()
     {
-        $actual = $this->object->is('L8V3Y1')->caPostalCode();
+        $actual = $this->object->_caPostalCode('L8V3Y1');
         $this->assertTrue($actual);
     }
 
@@ -73,7 +83,37 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsUKPostCode()
     {
-        $actual = $this->object->is('UB6 7BS')->ukPostCode();
+        $actual = $this->object->_ukPostCode('UB6 7BS');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\RegexpTrait::_nanpPhone()
+     * @group  regexp
+     */
+    public function testIsNANPPhone()
+    {
+        $actual = $this->object->_nanpPhone('609-555-0175');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\RegexpTrait::_eppPhone()
+     * @group  regexp
+     */
+    public function testIsEPPPhone()
+    {
+        $actual = $this->object->_eppPhone('+90.2322456789');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\RegexpTrait::_affirmative()
+     * @group  regexp
+     */
+    public function testIsAffirmative()
+    {
+        $actual = $this->object->_affirmative('yes');
         $this->assertTrue($actual);
     }
 
