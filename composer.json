@@ -1,0 +1,33 @@
+{
+    "name": "hassankhan/affirm",
+    "description": "Simple validation library",
+    "keywords": [
+        "validation"
+    ],
+    "homepage": "https://github.com/hassankhan/affirm",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hassan Khan",
+            "email": "contact@hassankhan.me",
+            "homepage": "http://hassankhan.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "hassankhan\\Skeleton\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "hassankhan\\Skeleton\\Test\\": "tests"
+        }
+    }
+}
