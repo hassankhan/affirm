@@ -60,7 +60,7 @@ class Affirm
     /**
      * This method is how you add a value to be 'affirmed'
      *
-     * @param  string|array|callable $value
+     * @param  mixed         $value
      *
      * @return Affirm\Affirm
      */
