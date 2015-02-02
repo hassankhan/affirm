@@ -52,10 +52,11 @@ trait TypeTrait
     public function _date($date)
     {
         try {
-            $datetime = new DateTime($date);
+            new DateTime($date);
             return true;
         }
         catch (\Exception $e) {
+            // We don't want to throw an exception, instead return `false`
         }
         return false;
     }

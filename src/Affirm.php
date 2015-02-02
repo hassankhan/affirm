@@ -55,13 +55,12 @@ class Affirm
     public function __construct()
     {
         $this->values = [];
-        return $this;
     }
 
     /**
      * This method is how you add a value to be 'affirmed'
      *
-     * @param  string|array|callable  $values
+     * @param  string|array|callable $value
      *
      * @return Affirm\Affirm
      */
@@ -73,8 +72,6 @@ class Affirm
 
     /**
      * This method is how you add values to be 'affirmed'
-     *
-     * @param  string|array|callable  $values
      *
      * @return Affirm\Affirm
      */
