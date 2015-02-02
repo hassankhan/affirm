@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "hassankhan\\Skeleton\\": "src"
+            "Affirm\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "hassankhan\\Skeleton\\Test\\": "tests"
+            "Affirm\\Test\\": "tests"
         }
     }
 }
