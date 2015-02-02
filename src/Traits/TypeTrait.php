@@ -21,7 +21,7 @@ trait TypeTrait
      *
      * @param  mixed   $boolean
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid boolean, false otherwise
      */
     public function _boolean($boolean)
     {
@@ -33,7 +33,7 @@ trait TypeTrait
      *
      * @param  mixed   $array
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid array, false otherwise
      */
     public function _array($array)
     {
@@ -45,7 +45,7 @@ trait TypeTrait
      *
      * @param  string  $date
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid date, false otherwise
      *
      * @see    http://php.net/manual/en/class.datetime.php
      */
@@ -65,7 +65,7 @@ trait TypeTrait
      *
      * @param  mixed   $function
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid callable function, false otherwise
      */
     public function _function($function)
     {
@@ -77,7 +77,7 @@ trait TypeTrait
      *
      * @param  mixed   $notNumber
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if NaN, false otherwise
      */
     public function _nan($notNumber)
     {
@@ -89,7 +89,7 @@ trait TypeTrait
      *
      * @param  mixed   $value
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if null, false otherwise
      */
     public function _null($value)
     {
@@ -101,7 +101,7 @@ trait TypeTrait
      *
      * @param  string  $number
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid number, false otherwise
      */
     public function _number($number)
     {
@@ -109,11 +109,12 @@ trait TypeTrait
     }
 
     /**
-     * Checks if `$pattern` is a valid regular expression
+     * Checks if `$pattern` is a valid regular expression. If it is not, an
+     * E_WARNING will be generated
      *
      * @param  string  $pattern
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid regular expression, false otherwise
      *
      * @see    http://stackoverflow.com/a/12941133/465273
      */
@@ -129,7 +130,7 @@ trait TypeTrait
      *
      * @param  mixed   $string
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid string, false otherwise
      */
     public function _string($string)
     {
@@ -141,7 +142,7 @@ trait TypeTrait
      *
      * @param  mixed   $char
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if valid character, false otherwise
      */
     public function _char($char)
     {
@@ -149,16 +150,16 @@ trait TypeTrait
     }
 
     /**
-     * Checks if `$value` is undefined. Usually this will also trigger an
-     * E_NOTICE about an undefined variable, too.
+     * Checks if `$value` is undefined. This will also trigger an E_NOTICE
+     * about an undefined variable, too
      *
      * @param  mixed   $value
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if undefined, false otherwise
      */
     public function _undefined($value)
     {
-        return !array_key_exists($value, get_defined_vars());
+        return !isset($value);
     }
 
     /**
@@ -167,7 +168,7 @@ trait TypeTrait
      * @param  mixed   $object1
      * @param  mixed   $object2
      *
-     * @return boolean True if valid, false otherwise
+     * @return boolean True if same type, false otherwise
      */
     public function _sameType($object1, $object2)
     {

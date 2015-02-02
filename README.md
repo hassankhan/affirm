@@ -6,7 +6,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Affirm is a simple, no-frills validation package written for PHP 5.5+. It is a PHP port of [is.js](http://arasatasaygin.github.io/is.js/).
+Affirm is a simple, no-frills validation package written for PHP 5.4+. It is a PHP port of [is.js](http://arasatasaygin.github.io/is.js/).
 
 Features:
 - Uses exceptions by default (sorry, error lovers)

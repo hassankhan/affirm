@@ -29,7 +29,6 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\TypeTrait::_boolean()
-     * @group  type
      */
     public function testIsBoolean()
     {
@@ -38,8 +37,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_boolean()
+     */
+    public function testIsInvalidBoolean()
+    {
+        $actual = $this->object->_boolean('notaboolean');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_array()
-     * @group  type
      */
     public function testIsArray()
     {
@@ -48,8 +55,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_array()
+     */
+    public function testIsInvalidArray()
+    {
+        $actual = $this->object->_array('hahahaha');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_date()
-     * @group  type
      */
     public function testIsDate()
     {
@@ -58,8 +73,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_date()
+     */
+    public function testIsInvalidDate()
+    {
+        $actual = $this->object->_date('hahahaha');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_function()
-     * @group  type
      */
     public function testIsFunction()
     {
@@ -69,8 +92,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_function()
+     */
+    public function testIsInvalidFunction()
+    {
+        $actual = $this->object->_function('hahahaha');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_nan()
-     * @group  type
      */
     public function testIsNan()
     {
@@ -79,28 +110,50 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_nan()
+     */
+    public function testIsNotNan()
+    {
+        $actual = $this->object->_nan(1);
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_null()
-     * @group  type
      */
     public function testIsNull()
     {
         $actual = $this->object->_null(NULL);
         $this->assertTrue($actual);
     }
+/**
+     * @covers Affirm\Traits\TypeTrait::_null()
+     */
+    public function testIsNotDate()
+    {
+        $actual = $this->object->_null('hahahaha');
+        $this->assertFalse($actual);
+    }
 
     /**
      * @covers Affirm\Traits\TypeTrait::_number()
-     * @group  type
      */
     public function testIsNumber()
     {
         $actual = $this->object->_number('5');
         $this->assertTrue($actual);
     }
+/**
+     * @covers Affirm\Traits\TypeTrait::_number()
+     */
+    public function testIsInvalidNumber()
+    {
+        $actual = $this->object->_number('hahahaha');
+        $this->assertFalse($actual);
+    }
 
     /**
      * @covers Affirm\Traits\TypeTrait::_regexp()
-     * @group  type
      */
     public function testIsRegexp()
     {
@@ -109,8 +162,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_regexp()
+     */
+    public function testIsInvalidRegexp()
+    {
+        @$actual = $this->object->_regexp('hahahaha');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_string()
-     * @group  type
      */
     public function testIsString()
     {
@@ -119,8 +180,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_string()
+     */
+    public function testIsInvalidString()
+    {
+        $actual = $this->object->_string(123);
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_char()
-     * @group  type
      */
     public function testIsChar()
     {
@@ -129,8 +198,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_char()
+     */
+    public function testIsInvalidChar()
+    {
+        $actual = $this->object->_char(1);
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_undefined()
-     * @group  type
      */
     public function testIsUndefined()
     {
@@ -139,8 +216,17 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_undefined()
+     */
+    public function testIsNotUndefined()
+    {
+        $newVar = 11;
+        $actual = $this->object->_undefined($newVar);
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_sameType()
-     * @group  type
      */
     public function testIsSameType()
     {
@@ -149,22 +235,11 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Affirm\Traits\TypeTrait::_boolean()
-     * @group  type
+     * @covers Affirm\Traits\TypeTrait::_sameType()
      */
-    public function testIsInvalidBoolean()
+    public function testIsNotSameType()
     {
-        $actual = $this->object->_boolean('notaboolean');
-        $this->assertFalse($actual);
-    }
-
-    /**
-     * @covers Affirm\Traits\TypeTrait::_date()
-     * @group  type
-     */
-    public function testIsInvalidDate()
-    {
-        $actual = $this->object->_date('hahahaha');
+        @$actual = $this->object->_sameType('10', 1);
         $this->assertFalse($actual);
     }
 

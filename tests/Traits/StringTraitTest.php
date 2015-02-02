@@ -29,7 +29,6 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\StringTrait::_include()
-     * @group  string
      */
     public function testIsInclude()
     {
@@ -38,35 +37,70 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\StringTrait::_include()
+     */
+    public function testIsInvalidInclude()
+    {
+        $actual = $this->object->_include('Are I here', 'Am');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\StringTrait::_uppercase()
-     * @group  string
      */
     public function testIsUpperCase()
     {
         $actual = $this->object->_upperCase('AAA');
         $this->assertTrue($actual);
     }
+
+    /**
+     * @covers Affirm\Traits\StringTrait::_uppercase()
+     */
+    public function testIsInvalidUppercase()
+    {
+        $actual = $this->object->_uppercase('eee');
+        $this->assertFalse($actual);
+    }
+
     /**
      * @covers Affirm\Traits\StringTrait::_lowercase()
-     * @group  string
      */
     public function testIsLowerCase()
     {
         $actual = $this->object->_lowerCase('eee');
         $this->assertTrue($actual);
     }
+
+    /**
+     * @covers Affirm\Traits\StringTrait::_lowercase()
+     */
+    public function testIsInvalidLowercase()
+    {
+        $actual = $this->object->_lowercase('AAA');
+        $this->assertFalse($actual);
+    }
+
     /**
      * @covers Affirm\Traits\StringTrait::_startsWith()
-     * @group  string
      */
     public function testIsStartsWith()
     {
         $actual = $this->object->_startsWith('This', 'Th');
         $this->assertTrue($actual);
     }
+
+    /**
+     * @covers Affirm\Traits\StringTrait::_startsWith()
+     */
+    public function testIsInvalidStartsWith()
+    {
+        $actual = $this->object->_startsWith('This', 'Ch');
+        $this->assertFalse($actual);
+    }
+
     /**
      * @covers Affirm\Traits\StringTrait::_endsWith()
-     * @group  string
      */
     public function testIsEndsWith()
     {
@@ -75,13 +109,30 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\StringTrait::_endsWith()
+     */
+    public function testIsInvalidEndsWith()
+    {
+        $actual = $this->object->_endsWith('This', 'ie');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\StringTrait::_capitalized()
-     * @group  string
      */
     public function testIsCapitalized()
     {
         $actual = $this->object->_capitalized('This');
         $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\StringTrait::_capitalized()
+     */
+    public function testIsInvalidCapitalized()
+    {
+        $actual = $this->object->_capitalized('this');
+        $this->assertFalse($actual);
     }
 
 }

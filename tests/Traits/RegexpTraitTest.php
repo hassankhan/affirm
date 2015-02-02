@@ -29,7 +29,6 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\RegexpTrait::_url()
-     * @group  regexp
      */
     public function testIsUrl()
     {
@@ -38,8 +37,16 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\RegexpTrait::_url()
+     */
+    public function testIsInvalidUrl()
+    {
+        $actual = $this->object->_url('aaaa');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\RegexpTrait::_email()
-     * @group  regexp
      */
     public function testIsEmail()
     {
@@ -48,13 +55,30 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\RegexpTrait::_email()
+     */
+    public function testIsInvalidEmail()
+    {
+        $actual = $this->object->_email('aaa');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\RegexpTrait::_creditCard()
-     * @group  regexp
      */
     public function testIsCreditCard()
     {
         $actual = $this->object->_creditCard('378282246310005');
         $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\RegexpTrait::_creditCard()
+     */
+    public function testIsInvalidCreditCard()
+    {
+        $actual = $this->object->_creditCard('aa');
+        $this->assertFalse($actual);
     }
 
     /**
@@ -67,8 +91,16 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\RegexpTrait::_alphaNumeric()
+     */
+    public function testIsInvalidAlphanumetic()
+    {
+        $actual = $this->object->_alphaNumeric('!!');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\RegexpTrait::_usZipCode()
-     * @group  regexp
      */
     public function testIsUSZipCode()
     {
@@ -77,8 +109,16 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\RegexpTrait::_usZipCode()
+     */
+    public function testIsInvalidUSZipCode()
+    {
+        $actual = $this->object->_usZipCode('000');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\RegexpTrait::_caPostalCode()
-     * @group  regexp
      */
     public function testIsCAPostalCode()
     {
@@ -88,7 +128,6 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\RegexpTrait::_ukPostCode()
-     * @group  regexp
      */
     public function testIsUKPostCode()
     {
@@ -98,7 +137,6 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\RegexpTrait::_nanpPhone()
-     * @group  regexp
      */
     public function testIsNANPPhone()
     {
@@ -108,7 +146,6 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\RegexpTrait::_eppPhone()
-     * @group  regexp
      */
     public function testIsEPPPhone()
     {
@@ -118,7 +155,6 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\RegexpTrait::_affirmative()
-     * @group  regexp
      */
     public function testIsAffirmative()
     {

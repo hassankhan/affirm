@@ -15,7 +15,10 @@ $af2 = new Affirm\Affirm();
 // echo ctype_digit(5);
 // echo (bool) 'true';
 
-var_dump($af->is($newVar)->undefined());
+$newVar = 1;
+var_dump($af->is(1)->sameType(1));
+// var_dump(array_key_exists('newVar', get_defined_vars()));
+
 
 // var_dump($af->are(1, 'The', 'Pes')->number());
 
