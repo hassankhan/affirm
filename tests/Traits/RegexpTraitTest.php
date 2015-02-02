@@ -58,6 +58,15 @@ class RegexpTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\RegexpTrait::_alphaNumeric()
+     */
+    public function testisAlphaNumeric()
+    {
+        $actual = $this->object->_alphaNumeric('123asd456qwe');
+        $this->assertTrue($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\RegexpTrait::_usZipCode()
      * @group  regexp
      */

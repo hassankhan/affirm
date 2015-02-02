@@ -14,6 +14,14 @@ namespace Affirm\Traits;
 trait StringTrait
 {
 
+    /**
+     * Checks if `$substring` is inside `string`
+     *
+     * @param  string  $string
+     * @param  string  $substring
+     *
+     * @return boolean True if valid, false otherwise
+     */
     public function _include($string, $substring)
     {
         return substr_count($string, $substring) > 0
@@ -21,50 +29,69 @@ trait StringTrait
             : false;
     }
 
+    /**
+     * Checks if `$string` is uppercase
+     *
+     * @param  string  $string
+     *
+     * @return boolean True if valid, false otherwise
+     */
     public function _upperCase($string)
     {
         return ctype_upper($string);
     }
 
+    /**
+     * Checks if `$string` is lowercase
+     *
+     * @param  string  $string
+     *
+     * @return boolean True if valid, false otherwise
+     */
     public function _lowerCase($string)
     {
         return ctype_lower($string);
     }
 
     /**
-     * Checks to see if `$string` begins with `$substring`
+     * Checks if `$string` begins with `$substring`
      *
      * @param  string  $string
      * @param  string  $substring
      *
      * @return boolean
      *
-     * @see http://stackoverflow.com/a/10473026/465273
+     * @see    http://stackoverflow.com/a/10473026/465273
      */
     public function _startsWith($string, $substring)
     {
         return $substring === ""
             || strrpos($string, $substring, -strlen($string)) !== false;
-        // return;
     }
 
     /**
-     * Checks to see if `$string` ends with `$substring`
+     * Checks if `$string` ends with `$substring`
      *
      * @param  string  $string
      * @param  string  $substring
      *
      * @return boolean
      *
-     * @see http://stackoverflow.com/a/10473026/465273
+     * @see    http://stackoverflow.com/a/10473026/465273
      */
     public function _endsWith($string, $substring)
     {
         return $substring === ''
             || strpos($string, $substring, strlen($string) - strlen($substring)) !== false;
-        // return;
     }
 
+    /**
+     * Checks if `$string` is capitalized
+     *
+     * @param  string  $string
+     *
+     * @return boolean True if valid, false otherwise
+     */
     public function _capitalized($string)
     {
         return $string === ucfirst($string);

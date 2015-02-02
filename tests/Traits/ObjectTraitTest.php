@@ -34,20 +34,20 @@ class ObjectTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Affirm\Affirm::_propertyCount()
+     * @covers Affirm\Traits\ObjectTrait::_propertyCount()
      * @group  object
      */
-    public function testPropertyCount()
+    public function testIsPropertyCount()
     {
         $actual = $this->object->_propertyCount(new TestObj, 2);
         $this->assertTrue($actual);
     }
 
     /**
-     * @covers Affirm\Affirm::_propertyDefined()
+     * @covers Affirm\Traits\ObjectTrait::_propertyDefined()
      * @group  object
      */
-    public function testPropertyDefined()
+    public function testIsPropertyDefined()
     {
         $actual = $this->object->_propertyDefined(new TestObj, 'prop1');
         $this->assertTrue($actual);

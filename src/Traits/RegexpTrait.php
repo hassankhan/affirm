@@ -3,7 +3,7 @@
 namespace Affirm\Traits;
 
 /**
- * Thia trait holds all regular expression related methods
+ * This trait holds all regular expression related methods
  *
  * @package    Affirm
  * @author     Hassan Khan <contact@hassankhan.me>
@@ -39,19 +39,9 @@ trait RegexpTrait
             : false;
     }
 
-    public function _alphaNumeric()
+    public function _alphaNumeric($string)
     {
-
-    }
-
-    public function _timeString()
-    {
-
-    }
-
-    public function _dateString()
-    {
-
+        return ctype_alnum($string);
     }
 
     public function _usZipCode($zipCode)

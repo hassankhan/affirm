@@ -69,6 +69,16 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_nan()
+     * @group  type
+     */
+    public function testIsNan()
+    {
+        $actual = $this->object->_nan(NAN);
+        $this->assertTrue($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_null()
      * @group  type
      */
@@ -105,6 +115,36 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     public function testIsString()
     {
         $actual = $this->object->_string('string');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_char()
+     * @group  type
+     */
+    public function testIsChar()
+    {
+        $actual = $this->object->_char('s');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_undefined()
+     * @group  type
+     */
+    public function testIsUndefined()
+    {
+        @$actual = $this->object->_undefined($newVar);
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_sameType()
+     * @group  type
+     */
+    public function testIsSameType()
+    {
+        @$actual = $this->object->_sameType(10, 1);
         $this->assertTrue($actual);
     }
 

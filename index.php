@@ -15,4 +15,8 @@ $af2 = new Affirm\Affirm();
 // echo ctype_digit(5);
 // echo (bool) 'true';
 
-var_dump($af->are('Thee', 'The', 'Pes')->any()->endsWith('is'));
+var_dump($af->is($newVar)->undefined());
+
+// var_dump($af->are(1, 'The', 'Pes')->number());
+
+// var_dump(is_infinite(INF));
