@@ -4,7 +4,9 @@ namespace Affirm;
 
 use Affirm\Traits\TypeTrait;
 use Affirm\Traits\PresenceTrait;
+use Affirm\Traits\RegexpTrait;
 use Affirm\Traits\StringTrait;
+use Affirm\Traits\ObjectTrait;
 
 /**
  * Affirm class
@@ -20,7 +22,9 @@ class Affirm
 
     use TypeTrait;
     use PresenceTrait;
+    use RegexpTrait;
     use StringTrait;
+    use ObjectTrait;
 
     /**
      * An array that holds all values to be filtered
@@ -29,12 +33,28 @@ class Affirm
      */
     protected $values;
 
+    protected $notFlag;
+
     /**
      * Create a new Affirm instance
      */
     public function __construct()
     {
-        $this->values = [];
+        $this->values  = [];
+        // $this->notFlag = '';
+        return $this;
+    }
+
+    /**
+     * This method is how you add a value to be 'affirmed'
+     *
+     * @param  string|array|callable  $values
+     *
+     * @return Affirm\Affirm
+     */
+    public function is($value)
+    {
+        $this->values[] = $value;
         return $this;
     }
 
@@ -45,14 +65,47 @@ class Affirm
      *
      * @return Affirm\Affirm
      */
-    public function is($values)
+    public function are()
     {
-        $this->values[] = $values;
+        $this->values = array_merge($this->values, func_get_args());
         return $this;
     }
 
     /**
-     * Returns all values currently held
+     * Sets `$this->notFlag = true`
+     *
+     * @return Affirm\Affirm
+     */
+    public function not()
+    {
+        $this->notFlag = true;
+        return $this;
+    }
+
+    /**
+     * Sets `$this->anyFlag = true`
+     *
+     * @return Affirm\Affirm
+     */
+    public function any()
+    {
+        $this->anyFlag = true;
+        return $this;
+    }
+
+    /**
+     * Sets `$this->allFlag = true`
+     *
+     * @return Affirm\Affirm
+     */
+    public function all()
+    {
+        $this->allFlag = true;
+        return $this;
+    }
+
+    /**
+     * Returns all values to be 'affirmed'
      *
      * @return array
      */
@@ -62,7 +115,11 @@ class Affirm
     }
 
     /**
-     * Use magic methods for the cool stuff
+     * This method checks to see if `$name` exists as a valid method (in a trait
+     * or otherwise). Then, all values  in `$this->values` are run against the
+     * chosen filter.
+     *
+     * @todo   Fix up
      *
      * @param  string $name
      * @param  mixed  $arguments
@@ -74,8 +131,20 @@ class Affirm
         if (method_exists($this, "_$name")) {
             if (count($this->values) === 1) {
                 $args = array_merge($this->values, $arguments);
-                return call_user_func_array([$this, "_$name"], $args);
+                return $this->notFlag
+                    ? !call_user_func_array([$this, "_$name"], $args)
+                    : call_user_func_array([$this, "_$name"], $args);
             }
+
+            /* Hacky */
+            $result = true;
+            foreach ($this->values as $value) {
+                $args   = array_merge([$value], $arguments);
+                $result = call_user_func_array([$this, "_$name"], $args);
+            }
+            return $this->notFlag
+                ? !$result
+                : $result;
         }
 
         throw new \Exception("Method $name doesn't exist");

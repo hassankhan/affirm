@@ -28,180 +28,36 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Affirm\Affirm::_boolean()
+     * @covers Affirm\Affirm::__call()
+     * @expectedException Exception
      */
-    public function testIsBoolean()
+    public function testCallInvalidMethod()
     {
-        $actual = $this->object->is(true)->boolean();
-        $this->assertTrue($actual);
+        $this->object->nothing();
     }
 
-    /**
-     * @covers Affirm\Affirm::_array()
-     */
-    public function testIsArray()
-    {
-        $actual = $this->object->is(['array'])->array();
-        $this->assertTrue($actual);
-    }
 
     /**
-     * @covers Affirm\Affirm::_date()
+     * @covers Affirm\Affirm::is()
+     * @covers Affirm\Affirm::not()
+     * @covers Affirm\Affirm::__call()
+     * @group  modifiers
      */
-    public function testIsDate()
+    public function testIsNot()
     {
-        $actual = $this->object->is('2000-00-00')->date();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_function()
-     */
-    public function testIsFunction()
-    {
-        $function = function() { return; };
-        $actual = $this->object->is($function)->function();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_null()
-     */
-    public function testIsNull()
-    {
-        $actual = $this->object->is(NULL)->null();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_number()
-     */
-    public function testIsNumber()
-    {
-        $actual = $this->object->is('5')->number();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_regexp()
-     */
-    public function testIsRegexp()
-    {
-        $actual = $this->object->is('#(.*)#')->regexp();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_string()
-     */
-    public function testIsString()
-    {
-        $actual = $this->object->is('string')->string();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_empty()
-     */
-    public function testIsEmpty()
-    {
-        $actual = $this->object->is('')->empty();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_truthy()
-     */
-    public function testIsTruthy()
-    {
-        $actual = $this->object->is('true')->truthy();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_falsy()
-     */
-    public function testIsFalsy()
-    {
-        $actual = $this->object->is('false')->falsy();
+        $actual = $this->object->is('This')->not()->endsWith('is');
         $this->assertFalse($actual);
     }
 
     /**
-     * @covers Affirm\Affirm::_space()
+     * @covers Affirm\Affirm::__construct()
+     * @covers Affirm\Affirm::__call()
+     * @covers Affirm\Affirm::are()
+     * @group  modifiers
      */
-    public function testIsSpace()
+    public function testMultipleItems()
     {
-        $actual = $this->object->is('     ')->space();
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_boolean()
-     */
-    public function testIsInvalidBoolean()
-    {
-        $actual = $this->object->is('notaboolean')->boolean();
-        $this->assertFalse($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_date()
-     */
-    public function testIsInvalidDate()
-    {
-        $actual = $this->object->is('hahahaha')->date();
-        $this->assertFalse($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_include()
-     */
-    public function testIsInclude()
-    {
-        $actual = $this->object->is('Am I here')->include('Am');
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_uppercase()
-     */
-    public function testIsUpperCase()
-    {
-        $actual = $this->object->is('AAA')->upperCase();
-        $this->assertTrue($actual);
-    }
-    /**
-     * @covers Affirm\Affirm::_lowercase()
-     */
-    public function testIsLowerCase()
-    {
-        $actual = $this->object->is('eee')->lowerCase();
-        $this->assertTrue($actual);
-    }
-    /**
-     * @covers Affirm\Affirm::_startsWith()
-     */
-    public function testIsStartsWith()
-    {
-        $actual = $this->object->is('This')->startsWith('Th');
-        $this->assertTrue($actual);
-    }
-    /**
-     * @covers Affirm\Affirm::_endsWith()
-     */
-    public function testIsEndsWith()
-    {
-        $actual = $this->object->is('This')->endsWith('is');
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Affirm::_capitalized()
-     */
-    public function testIsCapitalized()
-    {
-        $actual = $this->object->is('This')->capitalized();
+        $actual = $this->object->are('This', 'is')->endsWith('is');
         $this->assertTrue($actual);
     }
 

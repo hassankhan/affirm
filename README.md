@@ -21,7 +21,14 @@ $ composer require hassankhan/affirm
 
 ## Usage
 
+You can use Affirm in different ways:
 ```php
+Affirm::is();
+
+$affirm = new Affirm()
+$affirm->is();
+
+$affirm->_include($string, $substring);
 
 ```
 

@@ -19,7 +19,6 @@ trait StringTrait
         return substr_count($string, $substring) > 0
             ? true
             : false;
-        // return (bool) strpos(haystack, needle);
     }
 
     public function _upperCase($string)
@@ -70,6 +69,5 @@ trait StringTrait
     {
         return $string === ucfirst($string);
     }
-
 
 }
