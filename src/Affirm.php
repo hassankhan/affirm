@@ -4,6 +4,7 @@ namespace Affirm;
 
 use Affirm\Traits\TypeTrait;
 use Affirm\Traits\PresenceTrait;
+use Affirm\Traits\StringTrait;
 
 /**
  * Affirm class
@@ -19,6 +20,7 @@ class Affirm
 
     use TypeTrait;
     use PresenceTrait;
+    use StringTrait;
 
     /**
      * An array that holds all values to be filtered
@@ -71,7 +73,8 @@ class Affirm
     {
         if (method_exists($this, "_$name")) {
             if (count($this->values) === 1) {
-                return call_user_func_array([$this, "_$name"], $this->values);
+                $args = array_merge($this->values, $arguments);
+                return call_user_func_array([$this, "_$name"], $args);
             }
         }
 

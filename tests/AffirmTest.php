@@ -154,4 +154,55 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($actual);
     }
 
+    /**
+     * @covers Affirm\Affirm::_include()
+     */
+    public function testIsInclude()
+    {
+        $actual = $this->object->is('Am I here')->include('Am');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Affirm::_uppercase()
+     */
+    public function testIsUpperCase()
+    {
+        $actual = $this->object->is('AAA')->upperCase();
+        $this->assertTrue($actual);
+    }
+    /**
+     * @covers Affirm\Affirm::_lowercase()
+     */
+    public function testIsLowerCase()
+    {
+        $actual = $this->object->is('eee')->lowerCase();
+        $this->assertTrue($actual);
+    }
+    /**
+     * @covers Affirm\Affirm::_startsWith()
+     */
+    public function testIsStartsWith()
+    {
+        $actual = $this->object->is('This')->startsWith('Th');
+        $this->assertTrue($actual);
+    }
+    /**
+     * @covers Affirm\Affirm::_endsWith()
+     */
+    public function testIsEndsWith()
+    {
+        $actual = $this->object->is('This')->endsWith('is');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Affirm::_capitalized()
+     */
+    public function testIsCapitalized()
+    {
+        $actual = $this->object->is('This')->capitalized();
+        $this->assertTrue($actual);
+    }
+
 }
