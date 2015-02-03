@@ -15,14 +15,14 @@ trait StringTrait
 {
 
     /**
-     * Checks if `$substring` is inside `string`
+     * Checks if  `string` contains `$substring`
      *
      * @param  string  $string
      * @param  string  $substring
      *
      * @return boolean True if valid, false otherwise
      */
-    public function _include($string, $substring)
+    public function _contains($string, $substring)
     {
         return substr_count($string, $substring) > 0
             ? true

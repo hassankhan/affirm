@@ -28,20 +28,20 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Affirm\Traits\StringTrait::_include()
+     * @covers Affirm\Traits\StringTrait::_contains()
      */
-    public function testIsInclude()
+    public function testIsContains()
     {
-        $actual = $this->object->_include('Am I here', 'Am');
+        $actual = $this->object->_contains('Am I here', 'Am');
         $this->assertTrue($actual);
     }
 
     /**
-     * @covers Affirm\Traits\StringTrait::_include()
+     * @covers Affirm\Traits\StringTrait::_contains()
      */
-    public function testIsInvalidInclude()
+    public function testIsInvalidContains()
     {
-        $actual = $this->object->_include('Are I here', 'Am');
+        $actual = $this->object->_contains('Are I here', 'Am');
         $this->assertFalse($actual);
     }
 
