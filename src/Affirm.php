@@ -8,6 +8,7 @@ use Affirm\Traits\RegexpTrait;
 use Affirm\Traits\StringTrait;
 use Affirm\Traits\ArithmeticTrait;
 use Affirm\Traits\ObjectTrait;
+use Affirm\Traits\ArrayTrait;
 
 /**
  * Affirm class
@@ -27,6 +28,7 @@ class Affirm
     use StringTrait;
     use ArithmeticTrait;
     use ObjectTrait;
+    use ArrayTrait;
 
     /**
      * An array that holds all values to be filtered
