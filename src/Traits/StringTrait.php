@@ -24,9 +24,7 @@ trait StringTrait
      */
     public function _contains($string, $substring)
     {
-        return substr_count($string, $substring) > 0
-            ? true
-            : false;
+        return substr_count($string, $substring) > 0;
     }
 
     /**

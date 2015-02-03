@@ -34,9 +34,7 @@ trait RegexpTrait
 
     public function _creditCard($cardNumber)
     {
-        return preg_match($this->creditCardRegex, $cardNumber) === 1
-            ? true
-            : false;
+        return preg_match($this->creditCardRegex, $cardNumber) === 1;
     }
 
     public function _alphaNumeric($string)
@@ -46,44 +44,32 @@ trait RegexpTrait
 
     public function _usZipCode($zipCode)
     {
-        return preg_match($this->usZipCodeRegex, $zipCode) === 1
-            ? true
-            : false;
+        return preg_match($this->usZipCodeRegex, $zipCode) === 1;
     }
 
     public function _caPostalCode($postalCode)
     {
-        return preg_match($this->caPostalCodeRegex, $postalCode) === 1
-            ? true
-            : false;
+        return preg_match($this->caPostalCodeRegex, $postalCode) === 1;
     }
 
     public function _ukPostCode($postCode)
     {
-        return preg_match($this->ukPostCodeRegex, $postCode) === 1
-            ? true
-            : false;
+        return preg_match($this->ukPostCodeRegex, $postCode) === 1;
     }
 
     public function _nanpPhone($nanpPhone)
     {
-        return preg_match($this->nanpPhoneRegex, $nanpPhone) === 1
-            ? true
-            : false;
+        return preg_match($this->nanpPhoneRegex, $nanpPhone) === 1;
     }
 
     public function _eppPhone($eppPhone)
     {
-        return preg_match($this->eppPhoneRegex, $eppPhone) === 1
-            ? true
-            : false;
+        return preg_match($this->eppPhoneRegex, $eppPhone) === 1;
     }
 
     public function _affirmative($string)
     {
-        return preg_match($this->affirmativeRegex, $string) === 1
-            ? true
-            : false;
+        return preg_match($this->affirmativeRegex, $string) === 1;
     }
 
 }

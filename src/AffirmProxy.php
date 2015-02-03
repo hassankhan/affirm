@@ -2,6 +2,8 @@
 
 namespace Affirm;
 
+use Affirm\Affirm;
+
 /**
  * Affirm proxy class
  *
