@@ -68,8 +68,7 @@ class Affirm
      */
     public function is($value)
     {
-        $this->values[] = $value;
-        return $this;
+        return $this->are($value);
     }
 
     /**
