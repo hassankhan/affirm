@@ -66,7 +66,7 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
      * @covers Affirm\Affirm::is()
      * @covers Affirm\Affirm::not()
      * @covers Affirm\Affirm::__call()
-     * @covers Affirm\Affirm::processValues()
+     * @covers Affirm\Affirm::run()
      * @group  modifiers
      */
     public function testIsNot()
@@ -79,7 +79,7 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
      * @covers Affirm\Affirm::are()
      * @covers Affirm\Affirm::any()
      * @covers Affirm\Affirm::__call()
-     * @covers Affirm\Affirm::processValues()
+     * @covers Affirm\Affirm::run()
      * @group  modifiers
      */
     public function testAreAny()

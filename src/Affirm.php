@@ -115,9 +115,8 @@ class Affirm
     }
 
     /**
-     * This method checks to see if `$name` exists as a valid method (in a trait
-     * or otherwise). Then, all values  in `$this->values` are run against the
-     * chosen filter.
+     * This method checks to see if method `$name` exists as a valid method.
+     * Then, all values  in `$this->values` are run against the chosen method.
      *
      * @param  string $name
      * @param  mixed  $arguments
@@ -129,7 +128,7 @@ class Affirm
     public function __call($name, $arguments)
     {
         if (method_exists($this, "_$name")) {
-            return  $this->processValues($name, $arguments);
+            return $this->run($name, $arguments);
         }
         throw new \Exception("Method $name doesn't exist");
     }
@@ -143,7 +142,7 @@ class Affirm
      *
      * @return bool
      */
-    private function processValues($name, $arguments)
+    private function run($name, $arguments)
     {
         // Set `$result` to `false`
         $result = false;
