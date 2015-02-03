@@ -46,6 +46,42 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Affirm\Traits\TypeTrait::_float()
+     */
+    public function testIsFloat()
+    {
+        $actual = $this->object->_float(0.25);
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_float()
+     */
+    public function testIsInvalidFloat()
+    {
+        $actual = $this->object->_float('not-a-float');
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_integer()
+     */
+    public function testIsInteger()
+    {
+        $actual = $this->object->_integer(50);
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_integer()
+     */
+    public function testIsInvalidInteger()
+    {
+        $actual = $this->object->_integer('not-an-integer');
+        $this->assertFalse($actual);
+    }
+
+    /**
      * @covers Affirm\Traits\TypeTrait::_array()
      */
     public function testIsArray()

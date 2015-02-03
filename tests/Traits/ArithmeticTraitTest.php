@@ -108,26 +108,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Affirm\Traits\ArithmeticTrait::_float()
-     * @group  arithmetic
-     */
-    public function testIsFloat()
-    {
-        $actual = $this->object->_float(0.25);
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Traits\ArithmeticTrait::_integer()
-     * @group  arithmetic
-     */
-    public function testIsInteger()
-    {
-        $actual = $this->object->_integer(50);
-        $this->assertTrue($actual);
-    }
-
-    /**
      * @covers Affirm\Traits\ArithmeticTrait::_finite()
      * @group  arithmetic
      */

@@ -116,30 +116,6 @@ trait ArithmeticTrait
     }
 
     /**
-     * Checks if `$float` is a float
-     *
-     * @param  mixed   $float
-     *
-     * @return boolean True if valid, false otherwise
-     */
-    public function _float($float)
-    {
-        return (bool) filter_var($float, FILTER_VALIDATE_FLOAT);
-    }
-
-    /**
-     * Checks if `$integer` is an integer
-     *
-     * @param  mixed   $integer
-     *
-     * @return boolean True if valid, false otherwise
-     */
-    public function _integer($integer)
-    {
-        return (bool) filter_var($integer, FILTER_VALIDATE_INT);
-    }
-
-    /**
      * Checks if `$value` is a finite number
      *
      * @param  float   $value

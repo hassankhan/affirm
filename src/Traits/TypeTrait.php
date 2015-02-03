@@ -29,6 +29,30 @@ trait TypeTrait
     }
 
     /**
+     * Checks if `$float` is a float
+     *
+     * @param  mixed   $float
+     *
+     * @return boolean True if valid, false otherwise
+     */
+    public function _float($float)
+    {
+        return (bool) filter_var($float, FILTER_VALIDATE_FLOAT);
+    }
+
+    /**
+     * Checks if `$integer` is an integer
+     *
+     * @param  mixed   $integer
+     *
+     * @return boolean True if valid, false otherwise
+     */
+    public function _integer($integer)
+    {
+        return (bool) filter_var($integer, FILTER_VALIDATE_INT);
+    }
+
+    /**
      * Checks if `$array` is a valid array
      *
      * @param  mixed   $array
@@ -107,6 +131,18 @@ trait TypeTrait
     public function _number($number)
     {
         return ctype_digit($number);
+    }
+
+    /**
+     * Checks if `$number` is a valid number or numeric string
+     *
+     * @param  mixed   $number
+     *
+     * @return boolean True if valid number, false otherwise
+     */
+    public function _numeric($number)
+    {
+        return is_numeric($number);
     }
 
     /**
