@@ -8,6 +8,8 @@
 
 Affirm is a simple, no-frills assertion/validation package written for PHP 5.4+. It is a PHP port of [is.js](http://arasatasaygin.github.io/is.js/).
 
+It is quite similar to [Assert](https://github.com/beberlei/assert), and aims to match it.
+
 ## Install
 
 Via Composer
@@ -18,12 +20,27 @@ $ composer require hassankhan/affirm
 
 ## Usage
 
-You can use Affirm in a few different ways:
+First instantiate the class:
 ```php
-$affirm = new Affirm()
-$affirm->are('25', '50', '75')->any()->even();
+$affirm = new Affirm\Affirm()
+```
 
-$affirm->_include($string, $substring);
+You can use either `Affirm::is()` or `Affirm::are()` to pass in any values:
+```php
+$affirm->is(25, 50, 75);
+$affirm->are(25, 50, 75);
+```
+
+Once all values have been passed in, you can use a modifier. By default, Affirm will only return `true` if all values pass the test, you can change this like so:
+```php
+$affirm->is(25, 50, 75)->any();
+```
+
+Then add your test:
+```php
+$affirm->is(25, 50, 75)->any()->odd();
+```
+
 ```
 
 Please read the API documentation for a full list of available methods.
