@@ -212,4 +212,14 @@ trait TypeTrait
         return gettype($object1) === gettype($object2);
     }
 
+    public function _object($object)
+    {
+        return is_object($object);
+    }
+
+    public function _scalar($scalar)
+    {
+        return is_scalar($scalar);
+    }
+
 }

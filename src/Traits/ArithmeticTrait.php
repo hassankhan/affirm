@@ -24,6 +24,19 @@ trait ArithmeticTrait
      */
     public function _equal($firstValue, $secondValue)
     {
+        return $firstValue == $secondValue;
+    }
+
+    /**
+     * Checks if `$firstValue` is the same as `$secondValue`
+     *
+     * @param  mixed   $firstValue
+     * @param  mixed   $secondValue
+     *
+     * @return boolean True if valid, false otherwise
+     */
+    public function _same($firstValue, $secondValue)
+    {
         return $firstValue === $secondValue;
     }
 
