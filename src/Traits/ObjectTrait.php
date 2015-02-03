@@ -2,7 +2,6 @@
 
 namespace Affirm\Traits;
 
-use stdClass;
 /**
  * This trait holds all object-related methods
  *
@@ -18,8 +17,8 @@ trait ObjectTrait
     /**
      * Checks if `$object` has `$amount` number of properties
      *
-     * @param  mixed  $object
-     * @param  int    $amount
+     * @param  mixed    $object
+     * @param  int      $amount
      *
      * @return boolean  True if valid, false otherwise
      */
@@ -31,8 +30,8 @@ trait ObjectTrait
     /**
      * Checks if `$object` has `$property`
      *
-     * @param  mixed  $object
-     * @param  string $property
+     * @param  mixed    $object
+     * @param  string   $property
      *
      * @return boolean  True if valid, false otherwise
      */
