@@ -10,6 +10,7 @@ use Affirm\Traits\StringTrait;
 use Affirm\Traits\ArithmeticTrait;
 use Affirm\Traits\ObjectTrait;
 use Affirm\Traits\ArrayTrait;
+use Affirm\Traits\FileTrait;
 
 /**
  * Affirm class
@@ -31,6 +32,7 @@ class Affirm
     use ArithmeticTrait;
     use ObjectTrait;
     use ArrayTrait;
+    use FileTrait;
 
     /**
      * An array that holds all values to be filtered

@@ -15,45 +15,45 @@ trait FileTrait
 {
 
     /**
-     * Checks if `$file` is a valid file
+     * Checks if `$path` is a valid file
      *
-     * @param  mixed    $file
+     * @param  mixed    $path
      *
      * @return boolean  True if valid file, false otherwise
      */
-    public function _file($file)
+    public function _file($path)
     {
-        return is_file($file);
+        return is_file($path);
     }
 
     /**
-     * Checks if `$directory` is a valid directory
+     * Checks if `$path` is a valid directory
      *
      * @return boolean  True if valid directory, false otherwise
      */
-    public function _directory($directory)
+    public function _dir($path)
     {
-        return is_dir($directory);
+        return is_dir($path);
     }
 
     /**
-     * Checks if `$filename` is a readable file
+     * Checks if `$path` is a readable file
      *
      * @return boolean  True if readable, false otherwise
      */
-    public function _readable($filename)
+    public function _readable($path)
     {
-        return is_readable($filename);
+        return is_readable($path);
     }
 
     /**
-     * Checks if `$filename` is a writable file
+     * Checks if `$path` is a writable file
      *
      * @return boolean  True if writable, false otherwise
      */
-    public function _writable($filename)
+    public function _writable($path)
     {
-        return is_writable($filename);
+        return is_writable($path);
     }
 
 }

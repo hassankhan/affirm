@@ -162,14 +162,6 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
         $actual = $this->object->_null(NULL);
         $this->assertTrue($actual);
     }
-/**
-     * @covers Affirm\Traits\TypeTrait::_null()
-     */
-    public function testIsNotDate()
-    {
-        $actual = $this->object->_null('hahahaha');
-        $this->assertFalse($actual);
-    }
 
     /**
      * @covers Affirm\Traits\TypeTrait::_number()
@@ -185,6 +177,24 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     public function testIsInvalidNumber()
     {
         $actual = $this->object->_number('hahahaha');
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_numeric()
+     */
+    public function testIsNumeric()
+    {
+        $actual = $this->object->_numeric('25');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_numeric()
+     */
+    public function testIsInvalidNumeric()
+    {
+        $actual = $this->object->_numeric('hahahaha');
         $this->assertFalse($actual);
     }
 
@@ -276,6 +286,60 @@ class TypeTraitTest extends \PHPUnit_Framework_TestCase
     public function testIsNotSameType()
     {
         @$actual = $this->object->_sameType('10', 1);
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_object()
+     */
+    public function testIsObject()
+    {
+        $actual = $this->object->_object(new \stdClass);
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_object()
+     */
+    public function testIsInvalidObject()
+    {
+        $actual = $this->object->_object('hahahaha');
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_scalar()
+     */
+    public function testIsScalar()
+    {
+        $actual = $this->object->_scalar('scalar');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_scalar()
+     */
+    public function testIsInvalidScalar()
+    {
+        $actual = $this->object->_scalar([]);
+        $this->assertFalse($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_json()
+     */
+    public function testIsJson()
+    {
+        $actual = $this->object->_json('{ "key": "value" }');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\TypeTrait::_json()
+     */
+    public function testIsInvalidJson()
+    {
+        $actual = $this->object->_json('hahahaha');
         $this->assertFalse($actual);
     }
 
