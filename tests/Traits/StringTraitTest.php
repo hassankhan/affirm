@@ -135,4 +135,22 @@ class StringTraitTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($actual);
     }
 
+    /**
+     * @covers Affirm\Traits\StringTrait::_length()
+     */
+    public function testIsLength()
+    {
+        $actual = $this->object->_length('This', 4);
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\StringTrait::_length()
+     */
+    public function testIsInvalidLength()
+    {
+        $actual = $this->object->_length('This', 3);
+        $this->assertFalse($actual);
+    }
+
 }

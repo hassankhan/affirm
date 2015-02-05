@@ -15,7 +15,8 @@
         }
     ],
     "require": {
-        "php" : ">=5.4.0"
+        "php" : ">=5.4.0",
+        "hassankhan/frontman": "~0.1"
     },
     "require-dev": {
         "phpunit/phpunit" : "~4.0",

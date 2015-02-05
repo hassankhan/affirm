@@ -43,7 +43,7 @@ $affirm->is(25, 50, 75)->any()->odd();
 
 You can also use Affirm as a static class:
 ```php
-Affirm\AffirmProxy::is(25, 50, 75)->any()->odd();
+Affirm\Proxy::is(25, 50, 75)->any()->odd();
 ```
 
 Please read the API documentation for a full list of available methods.
