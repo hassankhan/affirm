@@ -95,4 +95,17 @@ trait StringTrait
         return $string === ucfirst($string);
     }
 
+    /**
+     * Checks if `$string` is of length `$length`
+     *
+     * @param  mixed    $string
+     * @param  mixed    $length
+     *
+     * @return boolean  True if equal, false otherwise
+     */
+    public function _length($string, $length)
+    {
+        return strlen($string) === $length;
+    }
+
 }

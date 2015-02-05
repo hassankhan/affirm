@@ -38,26 +38,6 @@ class PresenceTraitTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Affirm\Traits\PresenceTrait::_truthy()
-     * @group  presence
-     */
-    public function testIsTruthy()
-    {
-        $actual = $this->object->_truthy('true');
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @covers Affirm\Traits\PresenceTrait::_falsy()
-     * @group  presence
-     */
-    public function testIsFalsy()
-    {
-        $actual = $this->object->_falsy('false');
-        $this->assertFalse($actual);
-    }
-
-    /**
      * @covers Affirm\Traits\PresenceTrait::_space()
      * @group  presence
      */

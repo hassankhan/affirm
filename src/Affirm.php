@@ -5,6 +5,7 @@ namespace Affirm;
 use Affirm\Traits\TypeTrait;
 use Affirm\Traits\PresenceTrait;
 use Affirm\Traits\RegexpTrait;
+use Affirm\Traits\BooleanTrait;
 use Affirm\Traits\StringTrait;
 use Affirm\Traits\ArithmeticTrait;
 use Affirm\Traits\ObjectTrait;
@@ -25,6 +26,7 @@ class Affirm
     use TypeTrait;
     use PresenceTrait;
     use RegexpTrait;
+    use BooleanTrait;
     use StringTrait;
     use ArithmeticTrait;
     use ObjectTrait;

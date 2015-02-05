@@ -43,7 +43,6 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
      */
     public function testIs()
     {
-        // $actual = $this->object->is('This');
         $expected = ['This'];
         $actual   = $this->object->is('This')->values();
         $this->assertEquals($expected, $actual);
@@ -59,7 +58,6 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
         $expected = ['This', 'is'];
         $actual   = $this->object->are('This', 'is')->values();
         $this->assertEquals($expected, $actual);
-        // $this->assertTrue($actual);
     }
 
     /**
@@ -67,7 +65,6 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
      * @covers Affirm\Affirm::not()
      * @covers Affirm\Affirm::__call()
      * @covers Affirm\Affirm::run()
-     * @group  modifiers
      */
     public function testIsNot()
     {
@@ -80,7 +77,6 @@ class AffirmTest extends \PHPUnit_Framework_TestCase
      * @covers Affirm\Affirm::any()
      * @covers Affirm\Affirm::__call()
      * @covers Affirm\Affirm::run()
-     * @group  modifiers
      */
     public function testAreAny()
     {

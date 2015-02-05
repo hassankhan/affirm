@@ -29,17 +29,24 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_equal()
-     * @group  arithmetic
      */
     public function testIsEqual()
     {
-        $actual = $this->object->_equal(25, 25);
+        $actual = $this->object->_equal(25, '25');
+        $this->assertTrue($actual);
+    }
+
+    /**
+     * @covers Affirm\Traits\ArithmeticTrait::_same()
+     */
+    public function testIsSame()
+    {
+        $actual = $this->object->_same(25, 25);
         $this->assertTrue($actual);
     }
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_even()
-     * @group  arithmetic
      */
     public function testIsEven()
     {
@@ -49,7 +56,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_odd()
-     * @group  arithmetic
      */
     public function testIsOdd()
     {
@@ -59,7 +65,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_positive()
-     * @group  arithmetic
      */
     public function testIsPositive()
     {
@@ -69,7 +74,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_negative()
-     * @group  arithmetic
      */
     public function testIsNegative()
     {
@@ -79,7 +83,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_above()
-     * @group  arithmetic
      */
     public function testIsAbove()
     {
@@ -89,7 +92,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_under()
-     * @group  arithmetic
      */
     public function testIsUnder()
     {
@@ -99,7 +101,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_within()
-     * @group  arithmetic
      */
     public function testIsWithin()
     {
@@ -109,7 +110,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_finite()
-     * @group  arithmetic
      */
     public function testIsFinite()
     {
@@ -119,7 +119,6 @@ class ArithmeticTraitTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers Affirm\Traits\ArithmeticTrait::_infinite()
-     * @group  arithmetic
      */
     public function testIsInfinite()
     {

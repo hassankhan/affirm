@@ -27,30 +27,6 @@ trait PresenceTrait
     }
 
     /**
-     * Checks if `$value` is truthy
-     *
-     * @param  mixed   $value
-     *
-     * @return boolean True if valid, false otherwise
-     */
-    public function _truthy($value)
-    {
-        return (bool) filter_var($value, FILTER_VALIDATE_BOOLEAN);
-    }
-
-    /**
-     * Checks if `$value` is falsy
-     *
-     * @param  mixed   $value
-     *
-     * @return boolean True if valid, false otherwise
-     */
-    public function _falsy($value)
-    {
-        return (bool) filter_var($value, FILTER_VALIDATE_BOOLEAN);
-    }
-
-    /**
      * Checks if `$string` is whitespace
      *
      * @param  string  $string

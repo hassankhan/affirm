@@ -212,14 +212,40 @@ trait TypeTrait
         return gettype($object1) === gettype($object2);
     }
 
+    /**
+     * Checks if `$object` is an object
+     *
+     * @param  mixed   $object
+     *
+     * @return boolean True if object, false otherwise
+     */
     public function _object($object)
     {
         return is_object($object);
     }
 
+    /**
+     * Checks if `$scalar` is a scalar
+     *
+     * @param  mixed   $scalar
+     *
+     * @return boolean True if scalar, false otherwise
+     */
     public function _scalar($scalar)
     {
         return is_scalar($scalar);
+    }
+
+    /**
+     * Checks if `$json` is a JSON string
+     *
+     * @param  string  $json
+     *
+     * @return boolean True if JSON string, false otherwise
+     */
+    public function _json($json)
+    {
+        return json_decode($json) !== null && json_last_error() === JSON_ERROR_NONE;
     }
 
 }
